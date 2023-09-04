@@ -1,0 +1,12 @@
+.container {
+  position: fixed;
+  margin: 0;
+  background-image: url("../../../public/LoLImg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}

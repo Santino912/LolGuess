@@ -1,0 +1,25 @@
+.allContainer {
+  top: 0;
+  left: 0;
+  gap: 5%;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  color: white;
+  position: fixed;
+  text-align: center;
+  align-items: center;
+  background-color: var(--main-page-color);
+  justify-content: center;
+  z-index: 2;
+}
+
+.decoration {
+  width: 16.6%;
+  height: 20px;
+  background-color: white;
+}
+
+.textLink {
+  width: 16.6%;
+}
