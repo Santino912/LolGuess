@@ -67,7 +67,7 @@ export default function MaterialTheme({ children }: PropsWithChildren) {
     ...theme,
     palette: {
       ...theme?.palette,
-      mode: darkMode ? "dark" : "light",
+      mode: darkMode ? "light" : "dark",
     },
   });
 

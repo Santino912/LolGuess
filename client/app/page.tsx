@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Box, Switch, styled } from "@mui/material";
+import { Autocomplete, Box, Switch, TextField, styled } from "@mui/material";
 import ReSearchButton from "@/Components/ReSearchButton/ReSearchButton";
 import { useThemeContext } from "@/Components/Layout/Material Theme";
 import styles from "./page.module.css";
@@ -59,7 +59,7 @@ export default function Home() {
   return (
     <Box
       className={styles.allContainer}
-      color={darkMode ? "primary" : "secondary"}
+      color={darkMode ? "secondary" : "primary"}
     >
       <Box className={styles.modeAndButtonSearchContainer}>
         <ReSearchButton setChampData={setChampData} />
@@ -68,9 +68,17 @@ export default function Home() {
       <Box className={styles.contentContainer}>
         <Box
           className={styles.content}
-          color={darkMode ? "primary" : "secondary"}
+          color={darkMode ? "secondary" : "primary"}
           sx={{ backgroundColor: `secondary.${mode}` }}
-        ></Box>
+        >
+          {/* <Autocomplete
+            disablePortal
+            id="combo-box-demo"
+            sx={{ width: 300, backgroundColor: `secondary.${mode}` }}
+            options={champData}
+            renderInput={(params) => <TextField {...params} label="Movie" />}
+          /> */}
+        </Box>
       </Box>
     </Box>
   );

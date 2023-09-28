@@ -4,6 +4,7 @@ import { useThemeContext } from "../Layout/Material Theme";
 import { Button } from "@mui/material";
 import styles from "./ReSearchButton.module.css";
 import { fetchChampions } from "./utils";
+import axios from "axios";
 
 type SetChampData = (param: object) => void;
 
@@ -22,11 +23,16 @@ const ReSearchButton: FC<InterfaceReSearchButton> = ({ setChampData }) => {
     };
   }, [loading, setChampData]);
 
+  const handleClick = async () => {
+    const { data } = await axios.get("http://localhost:3001/champ");
+    setChampData(data);
+  };
+
   return (
     <Button
-      color={darkMode ? "secondary" : "primary"}
+      color={darkMode ? "primary" : "secondary"}
       className={styles.buttonContainer}
-      onClick={() => setLoading(true)}
+      onClick={() => handleClick()}
     >
       Research
     </Button>
