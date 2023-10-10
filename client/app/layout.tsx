@@ -1,8 +1,8 @@
 import React, { PropsWithChildren, StrictMode } from "react";
 import NavBar from "../Components/NavBar/NavBar";
 import MaterialTheme from "@/Components/Layout/Material Theme";
-import "./globals.css";
 import BackgroundImage from "@/Components/Layout/BackgroundImage/CotainerBackground";
+import "./globals.css";
 
 export const metadata = {
   title: "LolGuess",
@@ -22,11 +22,8 @@ export const links = [
     ref: "/splashart",
     content: "SplashArt",
   },
-  {
-    ref: "/title",
-    content: "Quote",
-  },
 ];
+
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <StrictMode>

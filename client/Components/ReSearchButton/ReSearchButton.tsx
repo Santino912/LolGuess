@@ -1,10 +1,10 @@
 "use client";
 import React, { FC, useEffect, useState } from "react";
-import { useThemeContext } from "../Layout/Material Theme";
 import { Button } from "@mui/material";
-import styles from "./ReSearchButton.module.css";
-import { fetchChampions } from "./utils";
 import axios from "axios";
+import { fetchChampions } from "./utils";
+import styles from "./ReSearchButton.module.css";
+import { useThemeContext } from "../Layout/Material Theme";
 
 type SetChampData = (param: object) => void;
 

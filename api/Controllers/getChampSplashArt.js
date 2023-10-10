@@ -2,7 +2,7 @@ import axios from "axios";
 import { allChampsLink, getLinkVersions } from "../Utils/links.js";
 import { getAllChampsAnRandomNum } from "../Utils/functionsShort.js";
 
-export default async function getChamp(_, res) {
+export default async function getChampSplashart(_, res) {
   try {
     const {
       data: [lastVersion],

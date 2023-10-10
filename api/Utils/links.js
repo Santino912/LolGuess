@@ -13,7 +13,7 @@ export const champLink = (version, champ) => {
 
 export const smallSplashartLink = (champ, num) => {
   //Splashart de carga chico
-  const link = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ}_${num}.jpg.jpg`;
+  const link = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ}_${num}jpg`;
 
   return link;
 };
@@ -25,7 +25,7 @@ export const champDefaultSplashartLink = (version, champ) => {
   return link;
 };
 
-export const ChampSkinSplashartLink = (champ, numSkin) => {
+export const champSkinSplashartLink = (champ, numSkin) => {
   //Splashart completo de un skin de campeon
   const link = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champ}_${numSkin}.jpg`;
 

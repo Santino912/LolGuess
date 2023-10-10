@@ -1,8 +1,19 @@
 import axios from "axios";
+import { allChampsLink, getLinkVersions } from "../Utils/links.js";
+import { getAllChampsAnRandomNum } from "../Utils/functionsShort.js";
 
-export default async function getChamp(_, res) {
+export default async function getAllChamps(_req, res) {
   try {
-    return res.send(updatedChamp);
+    const {
+      data: [lastVersion],
+    } = await axios.get(getLinkVersions());
+    const {
+      data: { data: champsData },
+    } = await axios.get(allChampsLink(lastVersion));
+
+    const updatedData = await getAllChampsAnRandomNum(champsData);
+
+    return res.send(updatedData);
   } catch (err) {
     return res.send(err);
   }
