@@ -33,15 +33,15 @@ const theme = createTheme({
     mode: "light",
     primary: {
       main: "#1e2328",
-      light: "white",
-      dark: "#000000",
+      light: "#aaaaaa",
+      dark: "#191919",
       contrastText: "#ffffff",
     },
     secondary: {
       main: "#ffffff",
       light: "#969696",
-      dark: "#1e2328",
-      contrastText: "#ffffff",
+      dark: "#484848",
+      contrastText: "#000000",
     },
   },
 });

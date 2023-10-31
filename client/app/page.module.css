@@ -1,25 +1,24 @@
 .allContainer {
-  width: 100vw;
-  padding-top: 50px;
   display: flex;
+  padding-top: 50px;
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .modeAndButtonSearchContainer {
-  width: 100vw;
   display: flex;
   justify-content: space-between;
 }
 
 .contentContainer {
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
   display: flex;
-  width: 100vw;
-  height: 80vh;
+  min-height: 40vh;
 }
+
 .buttonBox {
   display: flex;
   justify-content: center;
@@ -28,15 +27,89 @@
 }
 .content {
   width: 50vw;
-  height: auto;
-  min-height: 500px;
+  min-height: 150px;
+  padding: 10px 0px;
+  min-width: 280px;
   max-width: 500px;
+  background-color: var(--main-page-color);
+  border-radius: 20px 20px 0px 0px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .autocompleteBox {
-  height: 20%;
-  min-height: 150px;
+  height: 30%;
+  min-width: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 20px 0px;
+}
+
+.champsTriesContainer {
+  width: 50vw;
+  min-width: 280px;
+  height: auto;
+  display: flex;
+  max-width: 500px;
+  flex-direction: column;
+  border-radius: 0px 0px 20px 20px;
+  background-color: var(--main-page-color);
+}
+
+.imageAnswer {
+  filter: grayscale();
+}
+
+.skillImage {
+  background-color: var(--main-page-color);
+  justify-content: center;
+  align-items: center;
+  min-width: 280px;
+  max-width: 500px;
+  flex-wrap: wrap;
+  color: white;
+  display: flex;
+  height: 100%;
+  width: 50vw;
+  gap: 5px;
+}
+
+.bottomContainer {
+  background-color: var(--main-page-color);
+  min-width: 280px;
+  max-width: 500px;
+  border-radius: 0px 0px 20px 20px;
+  padding: 25px 0px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  width: 50vw;
+}
+.letterSkill {
+  background-color: var(--main-page-color);
+  justify-content: center;
+  align-items: center;
+  min-width: 280px;
+  max-width: 500px;
+  flex-wrap: wrap;
+  display: flex;
+  height: 100%;
+  width: 50vw;
+  gap: 5px;
+  border-radius: 0px 0px 20px 20px;
+  padding: 25px 0px;
+}
+
+.letter {
+  border-radius: 20%;
+  height: 80px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--second-color-text);
+  font-size: 25px;
 }

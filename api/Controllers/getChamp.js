@@ -11,7 +11,7 @@ export default async function getChamp(_, res) {
       data: { data: champsData },
     } = await axios.get(allChampsLink(lastVersion));
 
-    const updatedData = await getAllChampsAnRandomNum(champsData);
+    const updatedData = await getAllChampsAnRandomNum(champsData, lastVersion);
 
     return res.send(updatedData);
   } catch (err) {

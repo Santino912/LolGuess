@@ -1,8 +1,36 @@
 .autocomplete {
   color: white;
+  width: 90%;
 }
 
 .autocomplete svg {
   color: white;
   border-color: white !important;
+}
+
+.boxInput {
+  display: flex;
+  gap: 10px;
+  background-color: var(--main-page-color);
+  color: white;
+  height: 60px;
+}
+
+.champSelectedContainer {
+  gap: 10px;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  color: black;
+  align-items: center;
+  justify-content: center;
+}
+
+.tagsContainer {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
 }
