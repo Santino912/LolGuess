@@ -10,9 +10,17 @@ export type CorrectAnswerType = {
     isPassive: false,
     champName: string,
     letter: string,
+    title: string,
     id: string,
 }
 
+export interface StateAutocomplete {
+    partype: string,
+    title: string,
+    image: string,
+    name: string,
+    tags: string[],
+}
 export interface ObjectChamp {
     id: string
     name: string
@@ -23,6 +31,7 @@ export interface ObjectChamp {
     tags: string[]
     partype: string
     version: string
+    defaultImage: string
     image: {
         url: string
         full: string
@@ -46,6 +55,19 @@ export interface ObjectDataRequest {
     version: string
 }
 
+
+
+export interface ObjectChampWithSplashart extends ObjectChamp {
+    nameOfSkin: string
+    skinNum: number
+}
+
+export interface ObjectDataRequestSplashart {
+    champsNames: ObjectChamp[]
+    allChamps: ObjectChamp
+    answer: ObjectChampWithSplashart
+}
+
 export interface ObjectStateChamp {
     tags: string[] | never[]
     name: string | undefined
@@ -65,9 +87,7 @@ export interface ObjectChampTries {
 export interface AutocompleteType {
     setChampsTries: Dispatch<SetStateAction<ChampsSelectedType[] | never[]>>
     setChampSelected: Dispatch<SetStateAction<ObjectStateChamp>>
-    setAllChamps: Dispatch<SetStateAction<ObjectChamp[]>>
     champsTries: ChampsSelectedType[] | never[]
-    champSelected: ObjectStateChamp
     loading: boolean | undefined
     options: ObjectChamp[] | []
 
@@ -82,12 +102,17 @@ export interface AnswerChamp {
     passive: string
 }
 
-export interface AnsweredResultInterface {
+export interface AnsweredResultChampInterface {
     correctAnswer: { isPassive: boolean; champName: string; letter: string; name: string; id: string }
     answered: {
         isAnswered: boolean,
         letter: string,
         tries: number
     }
+    tries: number
+}
+
+export interface AnsweredResultNicknameInterface {
+
     tries: number
 }

@@ -23,3 +23,14 @@
 .textLink {
   width: 16.6%;
 }
+
+@media (max-width: 420px) {
+  .decoration {
+    width: 5%;
+    height: 20px;
+    background-color: var(--second-color-text);
+  }
+  .textLink {
+    width: 30%;
+  }
+}

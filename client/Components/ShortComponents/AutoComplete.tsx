@@ -1,44 +1,37 @@
-import React, {
-  ChangeEvent,
-  FormEvent,
-  SyntheticEvent,
-  useEffect,
-  useState,
-} from "react";
+import React, { SyntheticEvent, useState } from "react";
+import { Box, Chip } from "@mui/material";
 import Image from "next/image";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
 import { AutocompleteType, ObjectChamp } from "@/TypeScript/Interfaces";
-import { Chip } from "@mui/material";
 import style from "./Styles.module.css";
 
 export default function AutoComplete({
   loading,
   options,
   champsTries,
-  setAllChamps,
-  champSelected,
   setChampsTries,
   setChampSelected,
 }: AutocompleteType) {
   const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
 
   const testChange = (champ: ObjectChamp | null) => {
     if (champ == null) return true;
     const arrValues = Object.values(champ);
 
-    if (arrValues.some((value) => !value && value !== undefined)) return true;
+    if (arrValues.some((value) => value === undefined)) return true;
 
     return false;
   };
 
   const handleChange = (
-    _: SyntheticEvent<Element, Event>,
-    newValue: ObjectChamp | null
+    event: SyntheticEvent<Element, Event>,
+    newValue: ObjectChamp | null,
+    reason: string
   ) => {
     if (testChange(newValue)) return;
-
     const selectedChamp = {
       image: `https://ddragon.leagueoflegends.com/cdn/${newValue?.version}/img/champion/${newValue?.id}.png`,
       partype: newValue?.partype || "",
@@ -50,10 +43,8 @@ export default function AutoComplete({
     if (arrChamps?.some((value) => value == undefined)) {
       return setChampsTries([]);
     }
-
-    setChampsTries([selectedChamp, ...(champsTries || null)]);
-    setChampSelected(selectedChamp);
-    return;
+    setChampsTries([selectedChamp, ...champsTries]);
+    return setChampSelected(selectedChamp);
   };
 
   return (
@@ -73,22 +64,26 @@ export default function AutoComplete({
         width: "90%",
       }}
       color="secondary"
-      onChange={(event, newValue) => handleChange(event, newValue)}
+      onChange={(event, newValue, reason) =>
+        handleChange(event, newValue, reason)
+      }
       getOptionLabel={(option) => option?.label}
       getOptionDisabled={(option) =>
         champsTries?.some((champ) => champ.name === option.name)
       }
       renderOption={(props, option) => (
-        <li value={option.name} {...props} key={option.name}>
-          <Image
-            src={`https://ddragon.leagueoflegends.com/cdn/${option?.version}/img/champion/${option?.id}.png`}
-            alt={`${option?.name}`}
-            key={option.name}
-            loading="lazy"
-            height={50}
-            width={50}
-          />
-          {option.name}
+        <li value={option.name} {...props} key={option.id}>
+          <Box sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
+            <Image
+              src={`https://ddragon.leagueoflegends.com/cdn/${option?.version}/img/champion/${option?.id}.png`}
+              alt={`${option?.name}`}
+              key={option.name}
+              loading="lazy"
+              height={50}
+              width={50}
+            />
+            {option.name}
+          </Box>
         </li>
       )}
       renderTags={(tagValue, getTagProps) =>
@@ -103,7 +98,7 @@ export default function AutoComplete({
             label: { color: "white" },
           }}
           color="secondary"
-          label="Choose a Champ"
+          label="Guess the Champ"
           InputProps={{
             ...params.InputProps,
             endAdornment: (

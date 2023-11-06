@@ -16,7 +16,7 @@
   justify-content: flex-end;
   align-items: center;
   display: flex;
-  min-height: 40vh;
+  min-height: 55vh;
 }
 
 .buttonBox {
@@ -27,12 +27,12 @@
 }
 .content {
   width: 50vw;
-  min-height: 150px;
-  padding: 10px 0px;
+  min-height: 100px;
+  padding: 35px 0px 20px 0px;
   min-width: 280px;
   max-width: 500px;
   background-color: var(--main-page-color);
-  border-radius: 20px 20px 0px 0px;
+  border-radius: 10px 10px 0px 0px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -59,10 +59,6 @@
   background-color: var(--main-page-color);
 }
 
-.imageAnswer {
-  filter: grayscale();
-}
-
 .skillImage {
   background-color: var(--main-page-color);
   justify-content: center;
@@ -82,7 +78,8 @@
   min-width: 280px;
   max-width: 500px;
   border-radius: 0px 0px 10px 10px;
-  padding: 25px 0px;
+  padding-bottom: 20px;
+
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -91,7 +88,6 @@
 }
 .letterSkill {
   background-color: var(--main-page-color);
-  border-radius: 0px 0px 10px 10px;
   justify-content: center;
   align-items: center;
   min-width: 280px;
@@ -101,6 +97,7 @@
   height: 100%;
   width: 50vw;
   gap: 5px;
+  border-radius: 0px 0px 10px 10px;
   padding: 25px 0px;
 }
 
@@ -113,4 +110,45 @@
   justify-content: center;
   background-color: var(--second-color-text);
   font-size: 25px;
+}
+
+.nicknameContainer {
+  color: white;
+  width: 90%;
+  text-align: center;
+}
+
+.toGuessContainer {
+  height: 200px;
+  width: 80%;
+  align-items: center;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.splashartImageContainer {
+  width: 250px;
+  height: 200px;
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.imageToAnswer {
+  position: relative;
+  object-fit: contain;
+}
+
+.splashartImageAnswered {
+  width: 100%;
+}
+
+@media (max-width: 1000px) {
+  .content {
+    width: 100vw;
+  }
+  .bottomContainer {
+    width: 100vw;
+  }
 }

@@ -1,5 +1,5 @@
 import axios from "axios"
-import { ObjectChamp, ObjectDataRequest } from "@/TypeScript/Interfaces";
+import { ObjectChamp, ObjectChampWithSplashart, ObjectDataRequest, ObjectDataRequestSplashart } from "@/TypeScript/Interfaces";
 import { Dispatch, SetStateAction } from "react";
 
 interface Answer {
@@ -12,6 +12,26 @@ interface Answer {
 export const getAllChamps = async (setLoading: Dispatch<SetStateAction<boolean>>): Promise<ObjectDataRequest> => {
     try {
         const { data } = await axios.get(`http://localhost:3001/allchamps`);
+        setLoading(false)
+        return data
+    } catch (err: any) {
+        throw new Error(err?.message);
+    }
+}
+
+export const getAllChampsToNickname = async (setLoading: Dispatch<SetStateAction<boolean>>): Promise<ObjectDataRequest> => {
+    try {
+        const { data } = await axios.get(`http://localhost:3001/allchampsnickname`);
+        setLoading(false)
+        return data
+    } catch (err: any) {
+        throw new Error(err?.message);
+    }
+}
+
+export const getAllChampsToSplashart = async (setLoading: Dispatch<SetStateAction<boolean>>): Promise<ObjectDataRequestSplashart> => {
+    try {
+        const { data } = await axios.get(`http://localhost:3001/allchampssplashart`);
         setLoading(false)
         return data
     } catch (err: any) {
@@ -44,8 +64,8 @@ export const allIsUndefined = (answer: Answer): boolean | undefined => {
 interface StyleAnsweredLetter { isAnswered: boolean; letter: string; tries: number; }
 
 export const styleAnsweredLetter = (value: string, answered: StyleAnsweredLetter, correctAnswer: string) => {
-    const wrongStyle = { color: "red !important" }
-    const correctStyle = { color: "green !important" }
+    const wrongStyle = { color: "#9f5454 !important" }
+    const correctStyle = { color: "#68914d !important" }
     const standardStyle = {}
     return !answered?.isAnswered ? standardStyle : value === correctAnswer ? correctStyle : value === answered?.letter ? wrongStyle : {}
 }

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { allChampsLink, getLinkVersions } from "../Utils/links.js";
-import { getAllChampsAnRandomNum } from "../Utils/functionsShort.js";
+import { getAllChampsAnRandomSplashart } from "../Utils/functionsShort.js";
 
 export default async function getChampSplashart(_, res) {
   try {
@@ -11,7 +11,10 @@ export default async function getChampSplashart(_, res) {
       data: { data: champsData },
     } = await axios.get(allChampsLink(lastVersion));
 
-    const updatedData = await getAllChampsAnRandomNum(champsData, lastVersion);
+    const updatedData = await getAllChampsAnRandomSplashart(
+      champsData,
+      lastVersion
+    );
 
     return res.send(updatedData);
   } catch (err) {

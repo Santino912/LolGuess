@@ -10,11 +10,7 @@ export const getOneChampFromChamps = async (champs) => {
   return allChampsNames[num];
 };
 
-export const destructureData = async (champs, nameChampsArr, lastVersion) => {
-  return nameChamp;
-};
-
-export const getAllChampsAnRandomNum = async (champs, lastVersion) => {
+export const getAllChampsAnRandomChamp = async (champs, lastVersion) => {
   const allChampsNames = Object.keys(champs);
   const num = Math.round(Math.random() * (allChampsNames.length - 1));
   let answer = await axios.get(
@@ -40,8 +36,8 @@ export const getAllChampsAnRandomNum = async (champs, lastVersion) => {
     answerSkill = answerChampObj.spells[answerSkillNum];
     answerSkill.champName = champs[allChampsNames[num]].name;
     answerSkill.isPassive = false;
+    answerSkill.letter = letter;
   }
-  answerSkill.letter = letter;
 
   return {
     champsNames: objToArray(champs),
@@ -49,6 +45,48 @@ export const getAllChampsAnRandomNum = async (champs, lastVersion) => {
     version: lastVersion,
     allChamps: champs,
     answerSkill,
+  };
+};
+
+export const getAllChampsAnNickname = async (champs, lastVersion) => {
+  const allChampsNames = Object.keys(champs);
+  const num = Math.round(Math.random() * (allChampsNames.length - 1));
+  let answer = await axios.get(
+    `http://ddragon.leagueoflegends.com/cdn/13.21.1/data/en_US/champion/${
+      champs[allChampsNames[num]].id
+    }.json`
+  );
+  let answerChampObj = Object.values(answer.data.data)[0];
+  let titleSplited = answerChampObj.title.split("");
+  titleSplited.unshift(titleSplited.shift().toUpperCase());
+  answerChampObj.title = titleSplited.join("");
+  answerChampObj.defaultImage = `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${answerChampObj.id}_${answerChampObj.skins[0].num}.jpg`;
+
+  return {
+    champsNames: objToArray(champs),
+    answer: answerChampObj,
+    version: lastVersion,
+    allChamps: champs,
+  };
+};
+
+export const getAllChampsAnRandomSplashart = async (champs, lastVersion) => {
+  const allChampsNames = Object.keys(champs);
+  const num = Math.round(Math.random() * (allChampsNames.length - 1));
+  let answer = await axios.get(
+    `http://ddragon.leagueoflegends.com/cdn/13.21.1/data/en_US/champion/${
+      champs[allChampsNames[num]].id
+    }.json`
+  );
+  let answerChampObj = Object.values(answer.data.data)[0];
+  const numSkin = Math.round(Math.random() * (answerChampObj.skins.length - 1));
+  answerChampObj.skinNum = answerChampObj.skins[numSkin].num;
+  answerChampObj.nameOfSkin = answerChampObj.skins[numSkin].name;
+  return {
+    champsNames: objToArray(champs),
+    version: lastVersion,
+    allChamps: champs,
+    answer: answerChampObj,
   };
 };
 

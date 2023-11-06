@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import ChampsSelected from "@/Components/ShortComponents/ChampSelected";
 import ReSearchButton from "@/Components/ReSearchButton/ReSearchButton";
@@ -19,7 +19,7 @@ import {
   styleAnsweredLetter,
 } from "@/UtilsFunctions";
 import styles from "./page.module.css";
-import AnsweredResult from "@/Components/ShortComponents/AnsweredResult";
+import AnsweredResult from "@/Components/ShortComponents/AnsweredResultChamp";
 
 export default function Home() {
   const [error, setError] = useState(false);
@@ -60,6 +60,7 @@ export default function Home() {
       return;
     }
     return () => {
+      setAnswered({ isAnswered: false, letter: "", tries: 0 });
       setChampsTries([]);
       setAllChamps([]);
       setAnswer({
@@ -69,12 +70,10 @@ export default function Home() {
         name: "",
         id: "",
       });
-      setAnswered({ isAnswered: false, letter: "", tries: 0 });
     };
   }, []);
 
   const handleLetterAnswer = (value: string) => {
-    console.log(value, answer.letter, value === answer?.letter);
     if (value === answer?.letter) {
       return setAnswered({
         tries: champsTries.length,
@@ -112,7 +111,7 @@ export default function Home() {
               !champsTries.some(
                 (champ) => answer?.champName === champ?.name
               ) && (
-                <Box pt={"20px"}>
+                <Box p={"10px"}>
                   <Image
                     src={
                       answer?.isPassive
@@ -120,6 +119,7 @@ export default function Home() {
                         : getLinkActiveSkill(answer?.id)
                     }
                     className={styles.imageAnswer}
+                    user-select={"none"}
                     alt="Answer image"
                     width={70}
                     height={70}
@@ -128,17 +128,73 @@ export default function Home() {
                 </Box>
               )}
           </Box>
-          <Box className={styles.autocompleteBox}>
-            <AutoComplete
-              loading={loadingState}
-              options={allChamps}
-              champsTries={champsTries}
-              setAllChamps={setAllChamps}
-              champSelected={champSelected}
-              setChampsTries={setChampsTries}
-              setChampSelected={setChampSelected}
+          {answer?.champName !== champSelected?.name && (
+            <Box className={styles.autocompleteBox}>
+              <AutoComplete
+                loading={loadingState}
+                options={allChamps}
+                champsTries={champsTries}
+                setChampsTries={setChampsTries}
+                setChampSelected={setChampSelected}
+              />
+            </Box>
+          )}
+          {champsTries.some((champ) => answer?.champName === champ?.name) && (
+            <Box className={styles.letterSkill}>
+              <Button
+                color={"secondary"}
+                className={styles.letter}
+                onClick={() => handleLetterAnswer("P")}
+                disabled={answered.isAnswered}
+                sx={styleAnsweredLetter("P", answered, answer?.letter)}
+              >
+                P
+              </Button>
+              <Button
+                color={"secondary"}
+                className={styles.letter}
+                onClick={() => handleLetterAnswer("Q")}
+                disabled={answered.isAnswered}
+                sx={styleAnsweredLetter("Q", answered, answer?.letter)}
+              >
+                Q
+              </Button>
+              <Button
+                color={"secondary"}
+                className={styles.letter}
+                onClick={() => handleLetterAnswer("W")}
+                disabled={answered.isAnswered}
+                sx={styleAnsweredLetter("W", answered, answer?.letter)}
+              >
+                W
+              </Button>
+              <Button
+                color={"secondary"}
+                className={styles.letter}
+                onClick={() => handleLetterAnswer("E")}
+                disabled={answered.isAnswered}
+                sx={styleAnsweredLetter("E", answered, answer?.letter)}
+              >
+                E
+              </Button>
+              <Button
+                color={"secondary"}
+                className={styles.letter}
+                onClick={() => handleLetterAnswer("R")}
+                disabled={answered.isAnswered}
+                sx={styleAnsweredLetter("R", answered, answer?.letter)}
+              >
+                R
+              </Button>
+            </Box>
+          )}
+          {answered?.isAnswered && (
+            <AnsweredResult
+              answered={answered}
+              tries={champsTries?.length}
+              correctAnswer={answer}
             />
-          </Box>
+          )}
         </Box>
       </Box>
       {champsTries.some((champ) => answer?.champName === champ?.name) && (
@@ -157,69 +213,13 @@ export default function Home() {
         </Box>
       )}
       <Box className={styles.bottomContainer}>
-        {champsTries.some((champ) => answer?.champName === champ?.name) && (
-          <Box className={styles.letterSkill}>
-            <Button
-              color={"secondary"}
-              className={styles.letter}
-              onClick={() => handleLetterAnswer("P")}
-              disabled={answered.isAnswered}
-              sx={styleAnsweredLetter("P", answered, answer?.letter)}
-            >
-              P
-            </Button>
-            <Button
-              color={"secondary"}
-              className={styles.letter}
-              onClick={() => handleLetterAnswer("Q")}
-              disabled={answered.isAnswered}
-              sx={styleAnsweredLetter("Q", answered, answer?.letter)}
-            >
-              Q
-            </Button>
-            <Button
-              color={"secondary"}
-              className={styles.letter}
-              onClick={() => handleLetterAnswer("W")}
-              disabled={answered.isAnswered}
-              sx={styleAnsweredLetter("W", answered, answer?.letter)}
-            >
-              W
-            </Button>
-            <Button
-              color={"secondary"}
-              className={styles.letter}
-              onClick={() => handleLetterAnswer("E")}
-              disabled={answered.isAnswered}
-              sx={styleAnsweredLetter("E", answered, answer?.letter)}
-            >
-              E
-            </Button>
-            <Button
-              color={"secondary"}
-              className={styles.letter}
-              onClick={() => handleLetterAnswer("R")}
-              disabled={answered.isAnswered}
-              sx={styleAnsweredLetter("R", answered, answer?.letter)}
-            >
-              R
-            </Button>
-          </Box>
-        )}
-        {answered?.isAnswered && (
-          <AnsweredResult
-            answered={answered}
-            tries={champsTries?.length}
-            correctAnswer={answer}
-          />
-        )}
-        <Box className={styles.champsTriesContainer}>
+        <Grid container className={styles.champsTriesContainer}>
           {!!champsTries?.length &&
             !champsTries.some((champ) => answer?.champName === champ?.name) &&
             champsTries?.map((champ, i) => (
               <ChampsSelected champ={champ} key={i} />
             ))}
-        </Box>
+        </Grid>
       </Box>
     </Box>
   );

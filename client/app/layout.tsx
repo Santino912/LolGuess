@@ -11,12 +11,17 @@ export const metadata = {
 
 export const links = [
   {
+    ref: "/nickname",
+    content: "Nickname",
+  },
+  {
     ref: "/",
     content: "Skill",
   },
+
   {
-    ref: "/title",
-    content: "Title",
+    ref: "/splashart",
+    content: "Splashart",
   },
 ];
 

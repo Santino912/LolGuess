@@ -9,16 +9,15 @@
 }
 
 .boxInput {
-  display: flex;
   gap: 10px;
-  background-color: var(--main-page-color);
+  display: flex;
   color: white;
   height: 60px;
+  background-color: var(--main-page-color);
 }
 
 .champSelectedContainer {
   gap: 10px;
-  width: 100%;
   height: 100px;
   display: flex;
   color: black;
@@ -33,4 +32,11 @@
   align-items: center;
   justify-content: center;
   padding: 10px;
+}
+
+.resultsContainer {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
