@@ -1,12 +1,11 @@
 import axios from "axios"
-import { ObjectChamp, ObjectChampWithSplashart, ObjectDataRequest, ObjectDataRequestSplashart } from "@/TypeScript/Interfaces";
+import { ObjectDataRequest, ObjectDataRequestSplashart } from "@/TypeScript/Interfaces";
 import { Dispatch, SetStateAction } from "react";
-const { REACT_API_URL, REACT_LOCAL_HOST } = process.env
 
-axios.defaults.baseURL = REACT_API_URL || REACT_LOCAL_HOST;
+const baseURL = process.env.REACT_API_URL || "http://localhost:3001"
 
 
-console.log(process.env.REACT_API_URL)
+
 interface Answer {
     id: string,
     champName: string,
@@ -15,7 +14,7 @@ interface Answer {
 
 export const getAllChamps = async (setLoading: Dispatch<SetStateAction<boolean>>): Promise<ObjectDataRequest> => {
     try {
-        const { data } = await axios.get(`/allchamps`);
+        const { data } = await axios.get(`${baseURL}/allchamps`);
         setLoading(false)
         return data
     } catch (err: any) {
@@ -25,7 +24,7 @@ export const getAllChamps = async (setLoading: Dispatch<SetStateAction<boolean>>
 
 export const getAllChampsToNickname = async (setLoading: Dispatch<SetStateAction<boolean>>): Promise<ObjectDataRequest> => {
     try {
-        const { data } = await axios.get(`/allchampsnickname`);
+        const { data } = await axios.get(`${baseURL}/allchampsnickname`);
         setLoading(false)
         return data
     } catch (err: any) {
@@ -35,7 +34,7 @@ export const getAllChampsToNickname = async (setLoading: Dispatch<SetStateAction
 
 export const getAllChampsToSplashart = async (setLoading: Dispatch<SetStateAction<boolean>>): Promise<ObjectDataRequestSplashart> => {
     try {
-        const { data } = await axios.get(`/allchampssplashart`);
+        const { data } = await axios.get(`${baseURL}/allchampssplashart`);
         setLoading(false)
         return data
     } catch (err: any) {
