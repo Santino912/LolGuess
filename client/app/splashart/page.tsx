@@ -91,9 +91,6 @@ export default function Home() {
   }
   return (
     <Box className={styles.allContainer} color={"primary"}>
-      <Box className={styles.modeAndButtonSearchContainer}>
-        {/* <ReSearchButton setChampData={setChampsData} /> */}
-      </Box>
       <Box className={styles.contentContainer}>
         <Box className={styles.content}>
           <Box className={styles.toGuessContainer}>

@@ -6,7 +6,7 @@ const AnsweredResultNickname = ({ tries }: AnsweredResultNicknameInterface) => {
   return (
     <Box pt={2} color={"white"}>
       <Typography component={"h6"} variant="h6">
-        Number of Tries: {tries}
+        Tries: {tries}
       </Typography>
     </Box>
   );

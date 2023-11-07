@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import ChampsSelected from "@/Components/ShortComponents/ChampSelected";
-import ReSearchButton from "@/Components/ReSearchButton/ReSearchButton";
 import AutoComplete from "@/Components/ShortComponents/AutoComplete";
 import {
   ObjectChamp,
@@ -66,12 +65,8 @@ export default function Home() {
       location.reload();
     }
   }
-  console.log(answer);
   return (
     <Box className={styles.allContainer} color={"primary"}>
-      <Box className={styles.modeAndButtonSearchContainer}>
-        {/*  <ReSearchButton setChampData={setChampsData} /> */}
-      </Box>
       <Box className={styles.contentContainer}>
         <Box className={styles.content}>
           <Box className={styles.titleContainer}>

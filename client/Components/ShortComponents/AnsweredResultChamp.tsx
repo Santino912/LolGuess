@@ -19,8 +19,8 @@ const AnsweredResult = ({
           Nice Try
         </Typography>
       )}
-      <Typography component={"h3"} variant="h5">
-        Number of Tries: {tries}
+      <Typography component={"h5"} variant="h5">
+        Tries: {tries}
       </Typography>
     </Box>
   );

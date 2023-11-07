@@ -1,7 +1,6 @@
 import { Dispatch, SetStateAction } from "react"
 
 export type FunctionBooleanNoReturn = (param: boolean) => void
-export type FunctionWithoutReturn = () => void
 export type AnsweredSkillObject = { id: string, name: string, champName: string, isPassive: boolean, letter: string }
 
 export type ArrNamesType = string[]
@@ -113,6 +112,5 @@ export interface AnsweredResultChampInterface {
 }
 
 export interface AnsweredResultNicknameInterface {
-
     tries: number
 }

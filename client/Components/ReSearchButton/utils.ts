@@ -1,7 +1,7 @@
 import axios from "axios"
-import { FunctionBooleanNoReturn } from "@/TypeScript/Types"
+import { Dispatch, SetStateAction } from "react"
 
 
-export const fetchChampions = async (setLoading: FunctionBooleanNoReturn) => {
+export const fetchChampions = async (setLoading: Dispatch<SetStateAction<boolean>>) => {
     setLoading(false)
 }
