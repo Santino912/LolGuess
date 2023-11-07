@@ -95,7 +95,8 @@ export default function Home() {
       setAllChamps(data?.champsNames || allChamps);
       setAnswer(data?.answerSkill);
     } catch (err) {
-      location.reload();
+      console.log(err);
+      //location.reload();
     }
   }
 

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import ChampsSelected from "@/Components/ShortComponents/ChampSelected";
 import AutoComplete from "@/Components/ShortComponents/AutoComplete";
@@ -62,7 +62,8 @@ export default function Home() {
       setAllChamps(data?.champsNames || allChamps);
       setAnswer(data?.answer);
     } catch (err) {
-      location.reload();
+      console.log(err);
+      //location.reload();
     }
   }
   return (
