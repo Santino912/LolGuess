@@ -2,9 +2,7 @@ import axios from "axios"
 import { ObjectDataRequest, ObjectDataRequestSplashart } from "@/TypeScript/Interfaces";
 import { Dispatch, SetStateAction } from "react";
 
-const baseURL = process.env.REACT_API_URL || "http://localhost:3001"
-
-
+const baseURL = process.env.API_URL || "http://localhost:3001"
 
 interface Answer {
     id: string,

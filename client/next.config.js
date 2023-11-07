@@ -5,7 +5,7 @@ const nextConfig = {
     domains: ["ddragon.leagueoflegends.com"],
   },
   env: {
-    REACT_API_URL: "https://league-guess.onrender.com",
+    API_URL: "https://league-guess.onrender.com",
   },
 };
 
