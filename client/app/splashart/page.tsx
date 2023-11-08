@@ -94,11 +94,12 @@ export default function Home() {
       <Box className={styles.contentContainer}>
         <Box className={styles.content}>
           <Box className={styles.toGuessContainer}>
-            {!!answer?.id && (
+            {answer?.id && answer?.name && (
               <Box className={styles.splashartImage}>
                 <Image
                   width={400}
                   height={200}
+                  priority={true}
                   style={{
                     bottom: positionBottom(champsTries?.length),
                     transform: sizeImage(champsTries?.length),
