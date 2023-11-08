@@ -96,7 +96,12 @@ export default function Home() {
       <Box className={styles.contentContainer}>
         <Box className={styles.content}>
           {answer?.name === champSelected?.name && (
-            <Typography color={"white"} component="h4" variant="h4">
+            <Typography
+              color={"white"}
+              textAlign={"center"}
+              component="h3"
+              variant="h3"
+            >
               {answer?.nameOfSkin}
             </Typography>
           )}
