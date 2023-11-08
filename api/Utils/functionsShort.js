@@ -9,23 +9,24 @@ export const getOneChampFromChamps = async (champs) => {
 
   return allChampsNames[num];
 };
-
+//9 - 1
 export const getAllChampsAnRandomChamp = async (champs, lastVersion) => {
   const allChampsNames = Object.keys(champs);
   const num = Math.round(Math.random() * (allChampsNames.length - 1));
   let answer = await axios.get(
     `http://ddragon.leagueoflegends.com/cdn/13.21.1/data/en_US/champion/${
-      champs[allChampsNames[num]].id
+      champs[allChampsNames[num]]?.id
     }.json`
   );
   let answerChampObj = Object.values(answer.data.data)[0];
+
   let passive = {
-    champName: champs[allChampsNames[num]].name,
-    id: answerChampObj.passive.image.full,
-    name: answerChampObj.passive.name,
+    champName: champs[allChampsNames[num]]?.name,
+    id: answerChampObj?.passive?.image?.full,
+    name: answerChampObj?.passive?.name,
     isPassive: true,
   };
-  let answerSkillNum = Math.round(Math.random() * 5);
+  let answerSkillNum = Math.round(Math.random() * 4);
   let letter = ["Q", "W", "E", "R"][answerSkillNum];
   let answerSkill;
 
