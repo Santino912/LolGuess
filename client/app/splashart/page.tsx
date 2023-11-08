@@ -20,22 +20,6 @@ const urlLargeImage = (id: string, skinNum: number) => {
 const urlLoadingImage = (id: string, skinNum: number) => {
   return `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${id}_${skinNum}.jpg`;
 };
-const positionBottom = (tries: number) => {
-  const resultMult = tries * 20;
-
-  if (200 - resultMult < 0) {
-    return 0;
-  }
-  return 200 - resultMult;
-};
-const sizeImage = (tries: number) => {
-  const resultMult = 3 - tries * 0.2;
-  if (resultMult < 1) {
-    return `scale(1)`;
-  }
-
-  return `scale(${resultMult})`;
-};
 
 export default function Home() {
   const [error, setError] = useState(false);
@@ -89,10 +73,33 @@ export default function Home() {
       console.log(err);
     }
   }
+
+  const positionBottom = (tries: number) => {
+    const resultMult = tries * 20;
+
+    if (200 - resultMult < 0 || answer?.name === champSelected?.name) {
+      return 0;
+    }
+    return 200 - resultMult;
+  };
+  const sizeImage = (tries: number) => {
+    const resultMult = 3 - tries * 0.2;
+    if (resultMult < 1 || answer?.name === champSelected?.name) {
+      return `scale(1)`;
+    }
+
+    return `scale(${resultMult})`;
+  };
+
   return (
     <Box className={styles.allContainer} color={"primary"}>
       <Box className={styles.contentContainer}>
         <Box className={styles.content}>
+          {answer?.name === champSelected?.name && (
+            <Typography color={"white"} component="h4" variant="h4">
+              {answer?.nameOfSkin}
+            </Typography>
+          )}
           <Box className={styles.toGuessContainer}>
             {answer?.id && answer?.name && (
               <Box className={styles.splashartImage}>
@@ -102,7 +109,11 @@ export default function Home() {
                   priority={true}
                   style={{
                     bottom: positionBottom(champsTries?.length),
-                    transform: sizeImage(champsTries?.length),
+                    transform: sizeImage(
+                      champsTries?.length,
+                      answer?.name,
+                      champSelected?.name
+                    ),
                   }}
                   alt="Skin of the champ"
                   className={styles.imageToAnswer}
