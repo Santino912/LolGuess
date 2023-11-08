@@ -109,11 +109,7 @@ export default function Home() {
                   priority={true}
                   style={{
                     bottom: positionBottom(champsTries?.length),
-                    transform: sizeImage(
-                      champsTries?.length,
-                      answer?.name,
-                      champSelected?.name
-                    ),
+                    transform: sizeImage(champsTries?.length),
                   }}
                   alt="Skin of the champ"
                   className={styles.imageToAnswer}
