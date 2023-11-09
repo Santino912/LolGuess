@@ -127,7 +127,12 @@ export default function Home() {
                 />
               </Box>
             ) : (
-              <Box color="#af9767">
+              <Box
+                display={"flex"}
+                alignItems={"center"}
+                height={100}
+                color="#af9767"
+              >
                 <CircularProgress color="inherit" />
               </Box>
             )}

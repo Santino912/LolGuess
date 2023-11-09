@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, CircularProgress, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import ChampsSelected from "@/Components/ShortComponents/ChampSelected";
 import AutoComplete from "@/Components/ShortComponents/AutoComplete";
@@ -76,7 +76,18 @@ export default function Home() {
               variant="h5"
               component="h5"
             >
-              {answer?.title}
+              {answer?.title ? (
+                answer?.title
+              ) : (
+                <Box
+                  display={"flex"}
+                  alignItems={"center"}
+                  height={100}
+                  color="#af9767"
+                >
+                  <CircularProgress color="inherit" />
+                </Box>
+              )}
             </Typography>
           </Box>
 

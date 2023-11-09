@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, CircularProgress, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import ChampsSelected from "@/Components/ShortComponents/ChampSelected";
 import ReSearchButton from "@/Components/ReSearchButton/ReSearchButton";
@@ -106,7 +106,7 @@ export default function Home() {
             </Typography>
           )}
           <Box className={styles.toGuessContainer}>
-            {answer?.id && answer?.name && (
+            {answer?.id && answer?.name ? (
               <Box className={styles.splashartImage}>
                 <Image
                   width={400}
@@ -120,6 +120,15 @@ export default function Home() {
                   className={styles.imageToAnswer}
                   src={urlLargeImage(answer.id, answer?.skinNum)}
                 />
+              </Box>
+            ) : (
+              <Box
+                display={"flex"}
+                alignItems={"center"}
+                height={100}
+                color="#af9767"
+              >
+                <CircularProgress color="inherit" />
               </Box>
             )}
           </Box>
