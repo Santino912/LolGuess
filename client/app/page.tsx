@@ -109,24 +109,27 @@ export default function Home() {
         <Box className={styles.content}>
           <Box sx={{ transform: rotation }}>
             {answer?.id &&
-            !loadingState &&
-            !champsTries.some((champ) => answer?.champName === champ?.name) ? (
-              <Box p={"10px"}>
-                <Image
-                  src={
-                    answer?.isPassive
-                      ? getLinkPassiveSkill(answer?.id)
-                      : getLinkActiveSkill(answer?.id)
-                  }
-                  className={styles.imageAnswer}
-                  user-select={"none"}
-                  alt="Answer image"
-                  width={70}
-                  height={70}
-                  priority
-                />
-              </Box>
-            ) : (
+              !loadingState &&
+              !champsTries.some(
+                (champ) => answer?.champName === champ?.name
+              ) && (
+                <Box p={"10px"}>
+                  <Image
+                    src={
+                      answer?.isPassive
+                        ? getLinkPassiveSkill(answer?.id)
+                        : getLinkActiveSkill(answer?.id)
+                    }
+                    className={styles.imageAnswer}
+                    user-select={"none"}
+                    alt="Answer image"
+                    width={70}
+                    height={70}
+                    priority
+                  />
+                </Box>
+              )}
+            {!loadingState && (
               <Box
                 display={"flex"}
                 alignItems={"center"}
