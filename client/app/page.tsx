@@ -108,7 +108,7 @@ export default function Home() {
       <Box className={styles.contentContainer}>
         <Box className={styles.content}>
           <Box sx={{ transform: rotation }}>
-            {answer.id &&
+            {answer?.id &&
             !loadingState &&
             !champsTries.some((champ) => answer?.champName === champ?.name) ? (
               <Box p={"10px"}>
@@ -127,8 +127,8 @@ export default function Home() {
                 />
               </Box>
             ) : (
-              <Box>
-                <CircularProgress />
+              <Box color="#af9767">
+                <CircularProgress color="inherit" />
               </Box>
             )}
           </Box>
