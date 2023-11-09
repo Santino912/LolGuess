@@ -71,25 +71,25 @@ export default function Home() {
       <Box className={styles.contentContainer}>
         <Box className={styles.content}>
           <Box className={styles.titleContainer}>
-            <Typography
-              className={styles.nicknameContainer}
-              variant="h5"
-              component="h5"
-            >
-              {answer?.title ? (
-                answer?.title
-              ) : (
-                <Box
-                  display={"flex"}
-                  alignItems="center"
-                  textAlign="center"
-                  height={100}
-                  color="#af9767"
-                >
-                  <CircularProgress color="inherit" />
-                </Box>
-              )}
-            </Typography>
+            {answer?.title ? (
+              <Typography
+                className={styles.nicknameContainer}
+                variant="h5"
+                component="h5"
+              >
+                {answer?.title}
+              </Typography>
+            ) : (
+              <Box
+                display={"flex"}
+                alignItems="center"
+                textAlign="center"
+                height={100}
+                color="#af9767"
+              >
+                <CircularProgress color="inherit" />
+              </Box>
+            )}
           </Box>
 
           {answer?.name !== champSelected?.name && (
