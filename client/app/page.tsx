@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Box, Button, Grid } from "@mui/material";
+import { Box, Button, CircularProgress, Grid } from "@mui/material";
 import Image from "next/image";
 import ChampsSelected from "@/Components/ShortComponents/ChampSelected";
 import ReSearchButton from "@/Components/ReSearchButton/ReSearchButton";
@@ -103,31 +103,34 @@ export default function Home() {
   return (
     <Box className={styles.allContainer} color={"primary"}>
       <Box className={styles.modeAndButtonSearchContainer}>
-        <ReSearchButton setChampData={setChampsData} />
+        {/* //<ReSearchButton setChampData={setChampsData} /> */}
       </Box>
       <Box className={styles.contentContainer}>
         <Box className={styles.content}>
           <Box sx={{ transform: rotation }}>
-            {!loadingState &&
-              !champsTries.some(
-                (champ) => answer?.champName === champ?.name
-              ) && (
-                <Box p={"10px"}>
-                  <Image
-                    src={
-                      answer?.isPassive
-                        ? getLinkPassiveSkill(answer?.id)
-                        : getLinkActiveSkill(answer?.id)
-                    }
-                    className={styles.imageAnswer}
-                    user-select={"none"}
-                    alt="Answer image"
-                    width={70}
-                    height={70}
-                    priority
-                  />
-                </Box>
-              )}
+            {answer.id &&
+            !loadingState &&
+            !champsTries.some((champ) => answer?.champName === champ?.name) ? (
+              <Box p={"10px"}>
+                <Image
+                  src={
+                    answer?.isPassive
+                      ? getLinkPassiveSkill(answer?.id)
+                      : getLinkActiveSkill(answer?.id)
+                  }
+                  className={styles.imageAnswer}
+                  user-select={"none"}
+                  alt="Answer image"
+                  width={70}
+                  height={70}
+                  priority
+                />
+              </Box>
+            ) : (
+              <Box>
+                <CircularProgress />
+              </Box>
+            )}
           </Box>
           {answer?.champName !== champSelected?.name && (
             <Box className={styles.autocompleteBox}>
