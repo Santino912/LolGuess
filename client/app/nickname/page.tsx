@@ -81,7 +81,8 @@ export default function Home() {
               ) : (
                 <Box
                   display={"flex"}
-                  alignItems={"center"}
+                  alignItems="center"
+                  textAlign="center"
                   height={100}
                   color="#af9767"
                 >
