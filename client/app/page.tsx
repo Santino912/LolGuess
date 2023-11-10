@@ -129,7 +129,7 @@ export default function Home() {
                   />
                 </Box>
               )}
-            {!loadingState && (
+            {loadingState && (
               <Box
                 display={"flex"}
                 alignItems={"center"}
