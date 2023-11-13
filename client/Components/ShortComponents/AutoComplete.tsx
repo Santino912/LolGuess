@@ -67,7 +67,7 @@ export default function AutoComplete({
       onChange={(event, newValue, reason) =>
         handleChange(event, newValue, reason)
       }
-      getOptionLabel={(option) => option?.label}
+      getOptionLabel={(option) => option?.name}
       getOptionDisabled={(option) =>
         champsTries?.some((champ) => champ.name === option.name)
       }
