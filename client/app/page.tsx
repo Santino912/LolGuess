@@ -18,8 +18,8 @@ import {
   randomRotation,
   styleAnsweredLetter,
 } from "@/UtilsFunctions";
-import styles from "./page.module.css";
 import AnsweredResult from "@/Components/ShortComponents/AnsweredResultChamp";
+import styles from "./page.module.css";
 
 export default function Home() {
   const [error, setError] = useState(false);
@@ -107,7 +107,7 @@ export default function Home() {
       </Box>
       <Box className={styles.contentContainer}>
         <Box className={styles.content}>
-          <Box sx={{ transform: rotation }}>
+          <Box>
             {answer?.id &&
               !loadingState &&
               !champsTries.some(
@@ -154,46 +154,51 @@ export default function Home() {
           {champsTries.some((champ) => answer?.champName === champ?.name) && (
             <Box className={styles.letterSkill}>
               <Button
-                color={"secondary"}
+                color={"primary"}
+                variant="contained"
                 className={styles.letter}
-                onClick={() => handleLetterAnswer("P")}
                 disabled={answered.isAnswered}
+                onClick={() => handleLetterAnswer("P")}
                 sx={styleAnsweredLetter("P", answered, answer?.letter)}
               >
                 P
               </Button>
               <Button
-                color={"secondary"}
+                color={"primary"}
+                variant="contained"
                 className={styles.letter}
-                onClick={() => handleLetterAnswer("Q")}
                 disabled={answered.isAnswered}
+                onClick={() => handleLetterAnswer("Q")}
                 sx={styleAnsweredLetter("Q", answered, answer?.letter)}
               >
                 Q
               </Button>
               <Button
-                color={"secondary"}
+                color={"primary"}
+                variant="contained"
                 className={styles.letter}
-                onClick={() => handleLetterAnswer("W")}
                 disabled={answered.isAnswered}
+                onClick={() => handleLetterAnswer("W")}
                 sx={styleAnsweredLetter("W", answered, answer?.letter)}
               >
                 W
               </Button>
               <Button
-                color={"secondary"}
+                color={"primary"}
+                variant="contained"
                 className={styles.letter}
-                onClick={() => handleLetterAnswer("E")}
                 disabled={answered.isAnswered}
+                onClick={() => handleLetterAnswer("E")}
                 sx={styleAnsweredLetter("E", answered, answer?.letter)}
               >
                 E
               </Button>
               <Button
-                color={"secondary"}
+                color={"primary"}
+                variant="contained"
                 className={styles.letter}
-                onClick={() => handleLetterAnswer("R")}
                 disabled={answered.isAnswered}
+                onClick={() => handleLetterAnswer("R")}
                 sx={styleAnsweredLetter("R", answered, answer?.letter)}
               >
                 R
@@ -226,8 +231,8 @@ export default function Home() {
       )}
       <Box className={styles.bottomContainer}>
         <Grid container className={styles.champsTriesContainer}>
-          {!!champsTries?.length &&
-            !champsTries.some((champ) => answer?.champName === champ?.name) &&
+          {!champsTries.some((champ) => answer?.champName === champ?.name) &&
+            !!champsTries?.length &&
             champsTries?.map((champ, i) => (
               <ChampsSelected champ={champ} key={i} />
             ))}

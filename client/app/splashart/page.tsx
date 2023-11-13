@@ -112,6 +112,7 @@ export default function Home() {
                   width={400}
                   height={200}
                   priority={true}
+                  user-select={"none"}
                   style={{
                     bottom: positionBottom(champsTries?.length),
                     transform: sizeImage(champsTries?.length),

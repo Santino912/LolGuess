@@ -111,6 +111,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--second-color-text) !important;
-  font-size: 25px;
+  background-color: var(--second-color-text);
+  font-size: 22px;
 }
