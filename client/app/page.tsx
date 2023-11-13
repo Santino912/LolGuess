@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Box, Button, CircularProgress, Grid } from "@mui/material";
+import { Box, Button, CircularProgress, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import ChampsSelected from "@/Components/ShortComponents/ChampSelected";
 import ReSearchButton from "@/Components/ReSearchButton/ReSearchButton";
@@ -16,10 +16,10 @@ import {
   getLinkActiveSkill,
   getLinkPassiveSkill,
   randomRotation,
-  styleAnsweredLetter,
 } from "@/UtilsFunctions";
 import AnsweredResult from "@/Components/ShortComponents/AnsweredResultChamp";
 import styles from "./page.module.css";
+import ButtonsSkills from "@/Components/ShortComponents/ButtonsSkills";
 
 export default function Home() {
   const [error, setError] = useState(false);
@@ -75,17 +75,19 @@ export default function Home() {
 
   const handleLetterAnswer = (value: string) => {
     if (value === answer?.letter) {
-      return setAnswered({
+      setAnswered({
         tries: champsTries.length,
         isAnswered: true,
         letter: value,
       });
+      return;
     }
-    return setAnswered({
+    setAnswered({
       tries: champsTries.length,
       isAnswered: true,
       letter: value,
     });
+    return;
   };
 
   async function fetchChamps() {
@@ -153,56 +155,11 @@ export default function Home() {
           )}
           {champsTries.some((champ) => answer?.champName === champ?.name) && (
             <Box className={styles.letterSkill}>
-              <Button
-                color={"primary"}
-                variant="contained"
-                className={styles.letter}
-                disabled={answered.isAnswered}
-                onClick={() => handleLetterAnswer("P")}
-                sx={styleAnsweredLetter("P", answered, answer?.letter)}
-              >
-                P
-              </Button>
-              <Button
-                color={"primary"}
-                variant="contained"
-                className={styles.letter}
-                disabled={answered.isAnswered}
-                onClick={() => handleLetterAnswer("Q")}
-                sx={styleAnsweredLetter("Q", answered, answer?.letter)}
-              >
-                Q
-              </Button>
-              <Button
-                color={"primary"}
-                variant="contained"
-                className={styles.letter}
-                disabled={answered.isAnswered}
-                onClick={() => handleLetterAnswer("W")}
-                sx={styleAnsweredLetter("W", answered, answer?.letter)}
-              >
-                W
-              </Button>
-              <Button
-                color={"primary"}
-                variant="contained"
-                className={styles.letter}
-                disabled={answered.isAnswered}
-                onClick={() => handleLetterAnswer("E")}
-                sx={styleAnsweredLetter("E", answered, answer?.letter)}
-              >
-                E
-              </Button>
-              <Button
-                color={"primary"}
-                variant="contained"
-                className={styles.letter}
-                disabled={answered.isAnswered}
-                onClick={() => handleLetterAnswer("R")}
-                sx={styleAnsweredLetter("R", answered, answer?.letter)}
-              >
-                R
-              </Button>
+              <ButtonsSkills
+                handleLetterAnswer={handleLetterAnswer}
+                answered={answered}
+                answer={answer}
+              />
             </Box>
           )}
           {answered?.isAnswered && (
@@ -230,6 +187,13 @@ export default function Home() {
         </Box>
       )}
       <Box className={styles.bottomContainer}>
+        {champsTries.some((champ) => answer?.champName === champ?.name) && (
+          <Typography color={"white"} component={"h5"} variant="h5">
+            {champsTries?.length <= 1
+              ? "1 Try"
+              : `Tries: ${champsTries?.length}`}
+          </Typography>
+        )}
         <Grid container className={styles.champsTriesContainer}>
           {!champsTries.some((champ) => answer?.champName === champ?.name) &&
             !!champsTries?.length &&

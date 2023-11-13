@@ -6,22 +6,18 @@ import styles from "./Styles.module.css";
 const AnsweredResult = ({
   correctAnswer,
   answered,
-  tries,
 }: AnsweredResultChampInterface) => {
   return (
     <Box className={styles.resultsContainer}>
       {answered.letter === correctAnswer.letter ? (
         <Typography color={"#68914d"} component={"h3"} variant="h5">
-          !Good
+          Correct
         </Typography>
       ) : (
-        <Typography component={"h3"} variant="h5">
-          Nice Try
+        <Typography color={"#914d4d"} component={"h3"} variant="h5">
+          Wrong
         </Typography>
       )}
-      <Typography component={"h5"} variant="h5">
-        Tries: {tries}
-      </Typography>
     </Box>
   );
 };
