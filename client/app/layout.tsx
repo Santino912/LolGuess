@@ -29,6 +29,9 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <StrictMode>
       <MaterialTheme>
+        <head>
+          <link rel="icon" href="/favicon.ico" sizes="any" />
+        </head>
         <html>
           <body>
             <BackgroundImage />

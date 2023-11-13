@@ -111,6 +111,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--second-color-text);
+  background-color: var(--second-color-text) !important;
   font-size: 25px;
 }
